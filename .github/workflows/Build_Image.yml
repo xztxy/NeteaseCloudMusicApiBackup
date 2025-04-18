@@ -52,7 +52,7 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
-          标签: ${{ steps.meta.outputs.tags }}
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
       # Docker Hub描述更新（修正）
       - name: Update Docker Hub description
@@ -61,4 +61,4 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-          仓库: ${{ env.DOCKERHUB_USERNAME }}/${{ env.REPO_NAME }}
+          repository: ${{ env.DOCKERHUB_USERNAME }}/${{ env.REPO_NAME }}
