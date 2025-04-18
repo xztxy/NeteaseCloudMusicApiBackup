@@ -2,7 +2,7 @@ name: Docker
 on:
   workflow_dispatch:
   push:
-    标签: [ 'v*.*.*' ]
+    tags: [ 'v*.*.*' ]
 env:
   # 注册中心配置
   DOCKERHUB_REGISTRY: docker.io
