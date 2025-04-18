@@ -2,7 +2,7 @@ name: Docker
 on:
   workflow_dispatch:
   push:
-    tags: [ 'v*.*.*' ]
+    标签: [ 'v*.*.*' ]
 env:
   # 注册中心配置
   DOCKERHUB_REGISTRY: docker.io
@@ -45,6 +45,9 @@ jobs:
           images: |
             ${{ env.DOCKERHUB_REGISTRY }}/${{ env.DOCKERHUB_USERNAME }}/${{ env.REPO_NAME }}
             ${{ env.GHCR_REGISTRY }}/${{ github.repository_owner }}/${{ env.REPO_NAME }}
+          tags: |
+            type=ref,event=branch,branch=main,name=latest
+            type=semver,pattern={{version}}
       # 构建推送（多平台支持）
       - name: Build and push
         uses: docker/build-push-action@v5
